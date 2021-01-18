@@ -17,7 +17,6 @@
 
 package opennlp.tools.util;
 
-import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -36,7 +35,8 @@ public class XmlUtil {
   public static DocumentBuilder createDocumentBuilder() {
     try {
       DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-      documentBuilderFactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+      // Commented out so it will compile under android
+      // documentBuilderFactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
       return documentBuilderFactory.newDocumentBuilder();
     } catch (ParserConfigurationException e) {
       throw new IllegalStateException(e);
@@ -51,7 +51,8 @@ public class XmlUtil {
   public static SAXParser createSaxParser() {
     SAXParserFactory spf = SAXParserFactory.newInstance();
     try {
-      spf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+      // Commented out so it will compile under android
+      // spf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
       return spf.newSAXParser();
     } catch (ParserConfigurationException | SAXException e) {
       throw new IllegalStateException(e);
